@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  scaling-aeneas-tocloud:
+    lang: python3-flask
+    handler: ./scaling-aeneas-tocloud
+    image: shivupoojar/scaling-aeneas-tocloud:latest
+    enviornment:
+      bucket: "aeneas"
+      minio: 172.17.141.197:9001
+      access_key: minio
+      secret_key: minio123
+      write_debug: true

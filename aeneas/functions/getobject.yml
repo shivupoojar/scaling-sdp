@@ -1,0 +1,17 @@
+
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  getobject:
+    lang: python3-flask
+    handler: ./getobject
+    image: shivupoojar/scalinggetobject:latest
+    enviornment:
+      bucket: "aeneas"
+      minio: 172.17.141.197:9001
+      access_key: minio
+      secret_key: minio123
+      write_debug: true
+
