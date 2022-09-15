@@ -1,0 +1,22 @@
+#!/bin/bash
+
+export nano=`date +%s%N`
+export OUT=/tmp/$nano.mp3
+cat - > ${OUT}
+
+
+a=`echo $((1 +  RANDOM % 2 ))`
+export file=`echo 'p00'$a.xhtml`
+
+curl -d $file http://${gateway}:8080/function/getobject > /tmp/$file
+export filename=`date +%s%N`
+export filename=`echo $uuidgen`
+python -m aeneas.tools.execute_task \
+   ${OUT} \
+   /tmp/$file \
+   "task_language=eng|os_task_file_format=json|is_text_type=plain" /tmp/`echo $uuidgen`.json  > /tmp/output.txt 
+rm  ${OUT}
+#rm /tmp/$file
+mosquitto_pub -h ${mqttbroker} -p ${brokerport} -f /tmp/$fi.json -t tocloud -q 2
+rm /tmp/`echo $uuidgen`.json
+
