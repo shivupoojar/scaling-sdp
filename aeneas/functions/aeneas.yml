@@ -1,0 +1,15 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+functions:
+  aeneas:
+    lang: python3-flask-debian
+    handler: ./aeneas
+    image: shivupoojar/pythonaeneas:latest
+    environment:
+      RAW_BODY: True
+      gateway: 10.43.106.179:8080
+      broker: "172.17.141.197"
+      brokerport: "32332"
+      topic: "tocloud"
