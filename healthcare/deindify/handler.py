@@ -7,5 +7,5 @@ def handle(req):
     di_data['patient_id']=raw_data['patient_id']
     di_data['temperature']=raw_data['temperature']
     di_data['systolic']=raw_data['systolic']
-    di_data['"diastolic']=raw_data['"diastolic']
+    di_data['diastolic']=raw_data['diastolic']
     return json.dumps(di_data)
