@@ -44,15 +44,15 @@ class PublishTask(TaskSet):
         file_object = open('input_data.csv', 'a')
         file_object.write("%r\n" %str(intime))
         file_object.close()
-        topic = "aeneas"  # Subject name , It can be modified as needed 
+        topic = "aeneas2"  # Subject name , It can be modified as needed 
         f = open("p001.mp3", "rb")
         imagestring = f.read()
         f.close()
         payload = bytearray(imagestring)
-        MQTTMessageInfo = self.client.publish(topic,payload,qos=0, retain=False)
+        MQTTMessageInfo = self.client.publish(topic,payload,qos=0, retain=True)
         pub_mid = MQTTMessageInfo.mid
         self.client.pubmessage[pub_mid] = Message(
-                    REQUEST_TYPE, 0, topic, payload, self.start_time, PUBLISH_TIMEOUT, str(self.client._client_id)
+                    REQUEST_TYPE, 1, topic, payload, self.start_time, PUBLISH_TIMEOUT, str(self.client._client_id)
                     )
         MQTTMessageInfo.wait_for_publish()
         self.client.disconnect()

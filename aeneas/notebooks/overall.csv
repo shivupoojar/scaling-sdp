@@ -1,0 +1,2 @@
+Average Workload TPT,Workload TPT,workload_size,workload_type,Average FET,pod_count_aeneas,pod_count_getobject,pod_count_tocloud,pod_count_connector,CPU_rabbitmq_broker,CPU_rabbitmq_broker_requested,CPU_rabbitmq_broker_used,CPU_requested,CPU_used,Memory_rabbitmq_broker,Memory_rabbitmq_broker_used,pod_count_rabbitmq
+4.716376066666666,98.573732,15,15_30_rps,4.689933333333332,1,1,1,,,0.2,0.005841904067193577,2.5,1.2340498632934125,,39071.13829534777,1
